@@ -26,14 +26,20 @@ class TriviaTestCase(unittest.TestCase):
             self.db.create_all()
     
     def tearDown(self):
-        """Executed after reach test"""
+        """Executed after each test"""
         pass
 
     """
     TODO
     Write at least one test for each test for successful operation and for expected errors.
     """
-
+    def test_categories_route(self):
+        """Test _____________ index route """
+        res = self.client().get('/categories')
+        self.assertEqual(res.status_code, 200)
+        data =  json.loads(res.data)
+        self.assertIn('Science', data)
+        
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
